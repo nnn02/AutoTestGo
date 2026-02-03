@@ -1,0 +1,14 @@
+name: Test Go Application
+on:
+    pull_request:
+        paths: ['go/**/*.go'] # Goファイルに変更があった場合にトリガー
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+          - uses: actions/setup-go@v5
+            with:
+              go-version: '1.22' # 使用するGoのバージョンを指定
+          - run: go test go/excellent/*.go # Goのテストを実行
